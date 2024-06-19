@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'customers/index'
+  get 'customers/alphabetized', to: 'customers#alphabetized'
+  get 'customers/missing_email', to: 'customers#missing_email'
+  resources :customers, only: [:index]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
