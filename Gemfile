@@ -8,6 +8,10 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 gem 'activeadmin'
 gem 'devise'
 gem 'active_storage_validations'
+gem 'sassc-rails'
+gem 'mini_magick'
+
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -69,3 +73,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 2.6"
