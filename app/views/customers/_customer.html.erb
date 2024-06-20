@@ -1,0 +1,12 @@
+<div class="customer mb-10 p-5 bg-white rounded shadow-md flex items-center space-x-4 justify-center">
+  
+  <div>
+    <p class="font-bold"><%= customer.full_name %></p>
+    <p>Phone_Number: <%= customer.phone_number %></p>
+    <p>Email: <%= customer.email_address %></p>
+    <p>Notes: <%= customer.notes %></p>
+    <% if customer.image.attached? %>
+      <%= image_tag url_for(customer.image), class: "w-40 h-40 rounded-full" %>
+    <% end %>
+  </div>
+</div>

@@ -10,10 +10,12 @@ ActiveAdmin.register Customer do
   # or
   #
   permit_params do
-    permitted = [:full_name, :phone_number, :email_address, :notes]
+    permitted = [:full_name, :phone_number, :email_address, :notes, :image]
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end
+
+  remove_filter :image_attachment, :image_blob
 
   form do |f|
     f.inputs do
@@ -24,6 +26,23 @@ ActiveAdmin.register Customer do
       f.input :image, as: :file
     end
     f.actions
+  end
+
+  show do
+    attributes_table do
+      row :full_name
+      row :phone_number
+      row :email_address
+      row :notes
+      row :image do |customer|
+        if customer.image.attached?
+          image_tag url_for(customer.image)
+        else
+          "No image uploaded"
+        end
+      end
+    end
+    active_admin_comments
   end
   
 end
